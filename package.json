@@ -35,5 +35,8 @@
     "web-vitals": "^5.1.0",
     "winston": "^3.18.3",
     "zod": "^4.1.12"
+  },
+  "scripts": {
+    "build": "next build"
   }
 }
