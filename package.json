@@ -37,6 +37,7 @@
     "zod": "^4.1.12"
   },
   "scripts": {
-    "build": "next build"
+    "build": "prisma generate && next build",
+    "postinstall": "prisma generate"
   }
 }
