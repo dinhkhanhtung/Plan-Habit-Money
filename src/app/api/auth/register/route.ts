@@ -25,7 +25,6 @@ export async function POST(request: NextRequest) {
         email,
         passwordHash,
         subscriptionStatus: 'free',
-        usageTracking: {},
       }
     })
 

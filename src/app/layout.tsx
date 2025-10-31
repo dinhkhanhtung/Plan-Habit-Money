@@ -1,8 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
-import { SessionProvider } from 'next-auth/react'
-import { ErrorBoundary } from '@/components/ErrorBoundary'
-import { PerformanceTracker } from '@/components/PerformanceTracker'
+import { ClientLayout } from './client-layout'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -25,12 +23,9 @@ export default function RootLayout({
         <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
       </head>
       <body className="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
-        <ErrorBoundary>
-          <PerformanceTracker />
-          <SessionProvider>
-            {children}
-          </SessionProvider>
-        </ErrorBoundary>
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   )

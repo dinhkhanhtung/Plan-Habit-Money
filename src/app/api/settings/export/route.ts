@@ -28,8 +28,6 @@ export async function POST(request: NextRequest) {
         id: true,
         name: true,
         email: true,
-        createdAt: true,
-        updatedAt: true,
       },
     })
 
@@ -38,22 +36,17 @@ export async function POST(request: NextRequest) {
     }
 
     // Get related data (habits, transactions, weekly plans, etc.)
-    const [habits, transactions, weeklyPlans] = await Promise.all([
+    const [habits, transactions, weeklyTasks] = await Promise.all([
       prisma.habit.findMany({
         where: { userId: user.id },
         select: {
           id: true,
-          title: true,
+          name: true,
           description: true,
-          category: true,
           frequency: true,
-          targetCount: true,
-          currentCount: true,
-          createdAt: true,
-          updatedAt: true,
         },
       }),
-      prisma.transaction.findMany({
+      prisma.financialTransaction.findMany({
         where: { userId: user.id },
         select: {
           id: true,
@@ -65,20 +58,16 @@ export async function POST(request: NextRequest) {
           createdAt: true,
         },
       }),
-      prisma.weeklyPlan.findMany({
+      prisma.weeklyPlannerTask.findMany({
         where: { userId: user.id },
-        include: {
-          tasks: {
-            select: {
-              id: true,
-              title: true,
-              description: true,
-              completed: true,
-              priority: true,
-              dueDate: true,
-              createdAt: true,
-            },
-          },
+        select: {
+          id: true,
+          title: true,
+          description: true,
+          completed: true,
+          date: true,
+          time: true,
+          createdAt: true,
         },
       }),
     ])
@@ -87,7 +76,7 @@ export async function POST(request: NextRequest) {
       user,
       habits,
       transactions,
-      weeklyPlans,
+      weeklyTasks,
       exportDate: new Date().toISOString(),
       format,
     }
@@ -139,15 +128,15 @@ function convertToCSV(data: any): string {
 
   // Add user data
   lines.push('User Data')
-  lines.push('ID,Name,Email,Created At,Updated At')
-  lines.push(`${data.user.id},"${data.user.name}","${data.user.email}",${data.user.createdAt},${data.user.updatedAt}`)
+  lines.push('ID,Name,Email')
+  lines.push(`${data.user.id},"${data.user.name}","${data.user.email}"`)
   lines.push('')
 
   // Add habits
   lines.push('Habits')
-  lines.push('ID,Title,Description,Category,Frequency,Target Count,Current Count,Created At,Updated At')
+  lines.push('ID,Name,Description,Frequency')
   data.habits.forEach((habit: any) => {
-    lines.push(`${habit.id},"${habit.title}","${habit.description}","${habit.category}","${habit.frequency}",${habit.targetCount},${habit.currentCount},${habit.createdAt},${habit.updatedAt}`)
+    lines.push(`${habit.id},"${habit.name}","${habit.description}","${habit.frequency}"`)
   })
   lines.push('')
 
@@ -159,11 +148,11 @@ function convertToCSV(data: any): string {
   })
   lines.push('')
 
-  // Add weekly plans
-  lines.push('Weekly Plans')
-  lines.push('ID,Week Start,Tasks Count,Created At')
-  data.weeklyPlans.forEach((plan: any) => {
-    lines.push(`${plan.id},${plan.weekStart},${plan.tasks.length},${plan.createdAt}`)
+  // Add weekly tasks
+  lines.push('Weekly Planner Tasks')
+  lines.push('ID,Title,Description,Completed,Date,Time,Created At')
+  data.weeklyTasks.forEach((task: any) => {
+    lines.push(`${task.id},"${task.title}","${task.description}",${task.completed},${task.date},${task.time},${task.createdAt}`)
   })
 
   return lines.join('\n')

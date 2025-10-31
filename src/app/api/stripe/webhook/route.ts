@@ -58,7 +58,6 @@ export async function POST(request: NextRequest) {
         where: { stripePaymentIntentId: paymentIntent.id },
         data: {
           status: 'succeeded',
-          completedAt: new Date(),
         },
       });
 

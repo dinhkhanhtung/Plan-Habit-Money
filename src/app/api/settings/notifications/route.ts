@@ -21,14 +21,24 @@ export async function PUT(request: NextRequest) {
     const body = await request.json()
     const notificationSettings = updateNotificationsSchema.parse(body)
 
-    // Update or create notification settings for the user
-    const updatedSettings = await prisma.notificationSettings.upsert({
+    // Since notificationSettings model doesn't exist, we'll use userSettings instead
+    // Get user first to get userId
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+    })
+
+    if (!user) {
+      return NextResponse.json({ error: 'User not found' }, { status: 404 })
+    }
+
+    // Update or create user settings with notification preferences
+    const updatedSettings = await prisma.userSettings.upsert({
       where: {
-        userEmail: session.user.email,
+        userId: user.id,
       },
       update: notificationSettings,
       create: {
-        userEmail: session.user.email,
+        userId: user.id,
         ...notificationSettings,
       },
     })
@@ -62,12 +72,13 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
-    // Get notification settings for the user
-    const settings = await prisma.notificationSettings.findUnique({
-      where: {
-        userEmail: session.user.email,
-      },
+    // Get user settings for the user (which includes notifications)
+    const user = await prisma.user.findUnique({
+      where: { email: session.user.email },
+      include: { settings: true },
     })
+
+    const settings = user?.settings
 
     // Return default settings if none exist
     const defaultSettings = {

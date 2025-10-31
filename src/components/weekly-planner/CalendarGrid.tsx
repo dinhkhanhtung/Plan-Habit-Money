@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDroppable } from '@dnd-kit/core';
-import { TaskCard } from './TaskCard';
+import { TaskCard } from '@/components/weekly-planner/TaskCard';
 import { Task } from '@/app/weekly-planner/page';
 
 interface CalendarGridProps {

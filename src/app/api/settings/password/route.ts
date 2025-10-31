@@ -37,7 +37,7 @@ export async function PUT(request: NextRequest) {
     }
 
     // Verify current password
-    const isValidPassword = await bcrypt.compare(currentPassword, user.password)
+    const isValidPassword = await bcrypt.compare(currentPassword, user.passwordHash!)
     if (!isValidPassword) {
       return NextResponse.json(
         { error: 'Current password is incorrect' },
@@ -54,7 +54,7 @@ export async function PUT(request: NextRequest) {
         email: session.user.email,
       },
       data: {
-        password: hashedPassword,
+        passwordHash: hashedPassword,
       },
     })
 

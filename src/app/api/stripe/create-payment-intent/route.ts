@@ -86,11 +86,6 @@ export async function POST(request: NextRequest) {
         status: 'pending',
         stripePaymentIntentId: paymentIntent.id,
         daysPurchased: days,
-        metadata: {
-          userEmail: session.user.email,
-          originalAmountVND: amount.toString(),
-          createdAt: new Date().toISOString(),
-        },
       },
     });
 

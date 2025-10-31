@@ -31,12 +31,12 @@ export function observePerformance() {
   }
 
   // Web Vitals
-  import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-    getCLS(logWebVital)
-    getFID(logWebVital)
-    getFCP(logWebVital)
-    getLCP(logWebVital)
-    getTTFB(logWebVital)
+  import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
+    onCLS(logWebVital)
+    onINP(logWebVital)
+    onFCP(logWebVital)
+    onLCP(logWebVital)
+    onTTFB(logWebVital)
   }).catch(() => {
     // web-vitals not available
   })
