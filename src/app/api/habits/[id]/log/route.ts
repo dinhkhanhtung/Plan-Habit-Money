@@ -3,8 +3,9 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-export async function POST(request: NextRequest, { params }: { params: { id: string } }) {
+export async function POST(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
     // Check if habit exists and belongs to user
     const habit = await prisma.habit.findFirst({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id
       }
     });
@@ -32,7 +33,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
     // Check if log already exists for this date
     const existingLog = await prisma.habitLog.findFirst({
       where: {
-        habitId: params.id,
+        habitId: id,
         date: new Date(date)
       }
     });
@@ -48,7 +49,7 @@ export async function POST(request: NextRequest, { params }: { params: { id: str
       // Create new log
       const log = await prisma.habitLog.create({
         data: {
-          habitId: params.id,
+          habitId: id,
           date: new Date(date),
           completed
         }

@@ -3,8 +3,9 @@ import { getServerSession } from 'next-auth/next';
 import { authOptions } from '@/lib/auth';
 import { prisma } from '@/lib/prisma';
 
-export async function PUT(request: NextRequest, { params }: { params: { id: string } }) {
+export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -15,7 +16,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
 
     const goal = await prisma.goal.updateMany({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id
       },
       data: {
@@ -31,7 +32,7 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
     }
 
     const updatedGoal = await prisma.goal.findUnique({
-      where: { id: params.id }
+      where: { id: id }
     });
 
     return NextResponse.json(updatedGoal);
@@ -41,8 +42,9 @@ export async function PUT(request: NextRequest, { params }: { params: { id: stri
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -50,7 +52,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
     const goal = await prisma.goal.deleteMany({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id
       }
     });

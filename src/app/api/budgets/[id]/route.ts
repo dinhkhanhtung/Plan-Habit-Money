@@ -5,6 +5,7 @@ import { prisma } from '@/lib/prisma';
 
 export async function PUT(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -15,7 +16,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
     const budget = await prisma.budget.updateMany({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id
       },
       data: {
@@ -32,7 +33,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
     }
 
     const updatedBudget = await prisma.budget.findUnique({
-      where: { id: params.id }
+      where: { id: id }
     });
 
     return NextResponse.json(updatedBudget);
@@ -44,6 +45,7 @@ export async function PUT(request: NextRequest, { params }: { params: Promise<{ 
 
 export async function DELETE(request: NextRequest, { params }: { params: Promise<{ id: string }> }) {
   try {
+    const { id } = await params;
     const session = await getServerSession(authOptions);
     if (!session?.user?.id) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
@@ -51,7 +53,7 @@ export async function DELETE(request: NextRequest, { params }: { params: Promise
 
     const budget = await prisma.budget.deleteMany({
       where: {
-        id: params.id,
+        id: id,
         userId: session.user.id
       }
     });
