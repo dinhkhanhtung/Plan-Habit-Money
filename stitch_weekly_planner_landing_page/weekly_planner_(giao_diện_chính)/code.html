@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Weekly Planner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings:
+            'FILL' 0,
+            'wght' 400,
+            'GRAD' 0,
+            'opsz' 24
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#13c8ec",
+              "background-light": "#f6f8f8",
+              "background-dark": "#101f22",
+              "text-light": "#0d191b",
+              "text-dark": "#e0e4e5",
+              "text-muted-light": "#4c8d9a",
+              "text-muted-dark": "#8a9a9d",
+              "border-light": "#cfe3e7",
+              "border-dark": "#2a3a3d",
+              "card-light": "#ffffff",
+              "card-dark": "#18282b",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+<div class="flex h-screen w-full">
+<!-- SideNavBar (Left) -->
+<aside class="w-64 flex-shrink-0 bg-card-light dark:bg-card-dark border-r border-border-light dark:border-border-dark p-4">
+<div class="flex h-full flex-col justify-between">
+<div class="flex flex-col gap-6">
+<div class="flex items-center gap-3 px-2">
+<span class="material-symbols-outlined text-primary text-3xl">data_exploration</span>
+<h1 class="text-xl font-bold">Planner</h1>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-primary/20 text-text-light dark:text-text-dark" href="#">
+<span class="material-symbols-outlined text-lg">calendar_view_week</span>
+<p class="text-sm font-medium">Planner</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10" href="#">
+<span class="material-symbols-outlined text-lg text-text-muted-light dark:text-text-muted-dark">check_circle</span>
+<p class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Habits</p>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10" href="#">
+<span class="material-symbols-outlined text-lg text-text-muted-light dark:text-text-muted-dark">credit_card</span>
+<p class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Money</p>
+</a>
+</div>
+<button class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-text-light text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">New Event</span>
+</button>
+<!-- Mini Calendar -->
+<div class="mt-4 px-2">
+<div class="flex items-center justify-between mb-2">
+<p class="font-semibold text-sm">October 2024</p>
+<div class="flex gap-1">
+<button class="p-1 rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="p-1 rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 text-center text-xs text-text-muted-light dark:text-text-muted-dark">
+<span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span><span>Su</span>
+</div>
+<div class="grid grid-cols-7 text-center text-sm mt-2 gap-y-1">
+<span class="text-text-muted-light dark:text-text-muted-dark"></span>
+<span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+<span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+<span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+<span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+<span class="bg-primary/20 rounded-full text-text-light dark:text-text-dark font-bold">28</span>
+<span class="bg-primary/20 rounded-full text-text-light dark:text-text-dark font-bold">29</span>
+<span class="bg-primary/20 rounded-full text-text-light dark:text-text-dark font-bold">30</span>
+<span class="bg-primary/20 rounded-full text-text-light dark:text-text-dark font-bold">31</span>
+<span class="text-text-muted-light dark:text-text-muted-dark">1</span>
+<span class="text-text-muted-light dark:text-text-muted-dark">2</span>
+<span class="text-text-muted-light dark:text-text-muted-dark">3</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10" href="#">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-8" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDcDFVjiI2Bwg6A72jWue3oB7XKI8IMvsJqk_kQUCGo1UTmKLaagjoEoX6vXlhxPlDoXvBw38LgMag_eiV_jsuRUBFx0vz8DTDQauGE_57etM0vI3PrUrl9QFV0oD5vnfR0joH7dgbwUboFSvNRnlw4gIrymkZkDwR1Byw40npnY2DrUNb3Y0Pm5xlPozUxmgBVVBbQTiZfJ05UlBVuNWNx_d917LA3ntgDXnLSUUf1LQrTZN972MWrgWycvRYXA5up1amqiDfNQc0");'></div>
+<div class="flex flex-col">
+<h1 class="text-sm font-medium">Eleanor Vance</h1>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark">vance.eleanor@email.com</p>
+</div>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg hover:bg-primary/10" href="#">
+<span class="material-symbols-outlined text-lg text-text-muted-light dark:text-text-muted-dark">settings</span>
+<p class="text-sm font-medium text-text-muted-light dark:text-text-muted-dark">Settings</p>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto p-8">
+<div class="max-w-7xl mx-auto">
+<!-- PageHeading -->
+<div class="flex flex-wrap justify-between items-center gap-3 mb-4">
+<p class="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">My Week</p>
+<!-- ToolBar -->
+<div class="flex justify-between items-center gap-2">
+<div class="flex gap-2 p-1 bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark rounded-lg">
+<button class="p-2 rounded-md hover:bg-primary/10 text-text-muted-light dark:text-text-muted-dark">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="p-2 rounded-md hover:bg-primary/10 text-text-muted-light dark:text-text-muted-dark">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 bg-primary text-text-light gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-4">
+<span class="material-symbols-outlined text-xl">today</span>
+<span class="truncate">Today</span>
+</button>
+</div>
+</div>
+<!-- HeadlineText -->
+<h2 class="text-text-light dark:text-text-dark tracking-light text-2xl font-bold leading-tight mb-6">October 28 - November 3, 2024</h2>
+<!-- 7-Day Calendar View (modified Table) -->
+<div class="grid grid-cols-1 md:grid-cols-7 border-t border-l border-border-light dark:border-border-dark rounded-lg overflow-hidden bg-card-light dark:bg-card-dark">
+<!-- Day Column -->
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">MONDAY 28</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 flex flex-col gap-3">
+<div class="bg-primary/10 p-3 rounded-lg border-l-4 border-primary">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">10:00 AM - Design Sync</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1">Project Phoenix alignment.</p>
+</div>
+<div class="bg-amber-500/10 p-3 rounded-lg border-l-4 border-amber-500">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">2:00 PM - Kick-off</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1">Finalize all assets for launch.</p>
+</div>
+</div>
+</div>
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">TUESDAY 29</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1">
+<div class="bg-gray-500/10 p-3 rounded-lg border-l-4 border-gray-500 line-through text-text-muted-light dark:text-text-muted-dark">
+<p class="text-sm font-medium">Finalize Q4 report</p>
+</div>
+</div>
+</div>
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">WEDNESDAY 30</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 flex flex-col gap-3">
+<div class="bg-green-500/10 p-3 rounded-lg border-l-4 border-green-500">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">11:00 AM - Dentist</p>
+</div>
+</div>
+</div>
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">THURSDAY 31</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 flex flex-col gap-3">
+<div class="bg-primary/10 p-3 rounded-lg border-l-4 border-primary">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Lunch with Sarah</p>
+</div>
+<div class="bg-gray-500/10 p-3 rounded-lg border-l-4 border-gray-500">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Call Mom</p>
+</div>
+</div>
+</div>
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">FRIDAY 1</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 flex flex-col gap-3">
+<div class="bg-green-500/10 p-3 rounded-lg border-l-4 border-green-500">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Morning Yoga</p>
+</div>
+<div class="bg-primary/10 p-3 rounded-lg border-l-4 border-primary">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">5:00 PM - Happy Hour</p>
+<p class="text-xs text-text-muted-light dark:text-text-muted-dark mt-1">Team celebration at The Mill.</p>
+</div>
+</div>
+</div>
+<div class="border-b border-r border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">SATURDAY 2</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 opacity-60">
+<!-- Empty State example -->
+<div class="flex flex-col items-center justify-center h-full text-center border-2 border-dashed border-border-light dark:border-border-dark rounded-lg p-4">
+<span class="material-symbols-outlined text-4xl text-text-muted-light dark:text-text-muted-dark">relax</span>
+<p class="text-sm font-medium mt-2 text-text-muted-light dark:text-text-muted-dark">No plans yet. Enjoy your day!</p>
+</div>
+</div>
+</div>
+<div class="border-b border-border-light dark:border-border-dark min-h-[600px] flex flex-col">
+<div class="p-3 flex justify-between items-center border-b border-border-light dark:border-border-dark">
+<p class="text-sm font-medium">SUNDAY 3</p>
+<button class="p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded-full hover:bg-primary/10"><span class="material-symbols-outlined text-lg">add</span></button>
+</div>
+<div class="p-3 flex-1 flex flex-col gap-3">
+<div class="bg-gray-500/10 p-3 rounded-lg border-l-4 border-gray-500">
+<p class="text-sm font-medium text-text-light dark:text-text-dark">Weekly Review &amp; Planning</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Details & Goals Sidebar (Right) -->
+<aside class="w-72 flex-shrink-0 bg-card-light dark:bg-card-dark border-l border-border-light dark:border-border-dark p-6 hidden xl:block">
+<div class="flex flex-col gap-8">
+<!-- Weekly Goals Section -->
+<div>
+<h3 class="font-bold text-lg mb-4">This Week's Goals</h3>
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-medium">Launch Project Phoenix</p>
+<span class="text-xs text-text-muted-light dark:text-text-muted-dark font-medium">75%</span>
+</div>
+<div class="w-full bg-primary/20 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 75%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-medium">Finalize Q4 Budget</p>
+<span class="text-xs text-text-muted-light dark:text-text-muted-dark font-medium">20%</span>
+</div>
+<div class="w-full bg-primary/20 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 20%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex justify-between items-baseline">
+<p class="text-sm font-medium">Onboard New Designer</p>
+<span class="text-xs text-text-muted-light dark:text-text-muted-dark font-medium">100%</span>
+</div>
+<div class="w-full bg-primary/20 rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Habit Tracker Integration -->
+<div>
+<h3 class="font-bold text-lg mb-4">Today's Habits</h3>
+<div class="space-y-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">local_drink</span>
+<p class="text-sm">Drink 8 glasses of water</p>
+</div>
+<div class="flex gap-1.5">
+<div class="size-4 bg-primary rounded-full"></div>
+<div class="size-4 bg-primary rounded-full"></div>
+<div class="size-4 bg-primary rounded-full"></div>
+<div class="size-4 bg-border-light dark:bg-border-dark rounded-full"></div>
+<div class="size-4 bg-border-light dark:bg-border-dark rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-amber-500">self_improvement</span>
+<p class="text-sm">Meditate for 10 minutes</p>
+</div>
+<div class="flex gap-1.5">
+<div class="size-4 bg-amber-500 rounded-full"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-green-500">book_2</span>
+<p class="text-sm">Read 1 chapter</p>
+</div>
+<div class="flex gap-1.5">
+<div class="size-4 bg-border-light dark:bg-border-dark rounded-full border border-green-500"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</aside>
+</div>
+</body></html>

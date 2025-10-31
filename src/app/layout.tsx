@@ -1,0 +1,37 @@
+import type { Metadata } from 'next'
+import { Inter } from 'next/font/google'
+import { SessionProvider } from 'next-auth/react'
+import { ErrorBoundary } from '@/components/ErrorBoundary'
+import { PerformanceTracker } from '@/components/PerformanceTracker'
+import './globals.css'
+
+const inter = Inter({ subsets: ['latin'] })
+
+export const metadata: Metadata = {
+  title: 'Plan Habit Money',
+  description: 'Quản lý Tuần, Theo dõi Thói quen, Làm chủ Tài chính',
+}
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    <html lang="vi" className="light">
+      <head>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+      </head>
+      <body className="font-display bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark">
+        <ErrorBoundary>
+          <PerformanceTracker />
+          <SessionProvider>
+            {children}
+          </SessionProvider>
+        </ErrorBoundary>
+      </body>
+    </html>
+  )
+}

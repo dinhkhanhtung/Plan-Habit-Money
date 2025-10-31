@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Money Dashboard - Planner App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#4FD1C5",
+              "income": "#48BB78",
+              "expense": "#F56565",
+              "background-light": "#F7FAFC",
+              "background-dark": "#1A202C",
+              "text-light-primary": "#2D3748",
+              "text-dark-primary": "#F7FAFC",
+              "text-light-secondary": "#A0AEC0",
+              "text-dark-secondary": "#A0AEC0",
+              "border-light": "#E2E8F0",
+              "border-dark": "#4A5568",
+              "surface-light": "#FFFFFF",
+              "surface-dark": "#2D3748",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.5rem", "lg": "0.75rem", "xl": "1rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        font-size: 20px;
+      }
+    </style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-text-light-primary dark:text-text-dark-primary">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-light dark:border-border-dark px-6 md:px-10 py-4 bg-surface-light dark:bg-surface-dark sticky top-0 z-10">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-tight">Planner App</h2>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Planner</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Habits</a>
+<a class="text-primary text-sm font-bold" href="#">Smart Money</a>
+</div>
+<div class="flex flex-1 justify-end items-center gap-4">
+<button class="flex items-center justify-center gap-2 min-w-[84px] cursor-pointer rounded-DEFAULT h-10 px-4 bg-primary text-white text-sm font-bold leading-normal tracking-wide hover:bg-opacity-90 transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="truncate hidden sm:inline">Add Transaction</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture, a person smiling slightly" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAK42XNtFaf9DPOFExEZmj2c3RgYcoa-8D03ucKx_QKzp9FbxWfpf9PlqVENnS9_r2M7WOq-yq4iBI2eCdci1vXV2KD3lhpfnNz4wPyJ_aKkSKOda-lf7pQKQT0z_ViHCoNu9JR0pldpioQZOrfHNv0kAqdWgYRq7k1k49i_VoqGhMgZQ0jGMy1BVeR230Q6AqWoF8KrhUlOT4G_TdUf0jC7bnhXwuuJ261dh81QMXpWxlFzLruqAvcUmP1J5bOJHJYL_hKsxrxM74");'></div>
+</div>
+</header>
+<main class="px-4 sm:px-6 lg:px-10 py-8 w-full max-w-7xl mx-auto flex flex-col gap-8">
+<div class="flex flex-wrap justify-between items-start gap-4">
+<div class="flex flex-col gap-1">
+<p class="text-4xl font-black tracking-tighter">Smart Money Dashboard</p>
+<p class="text-base font-normal text-text-light-secondary dark:text-text-dark-secondary">Here's a comprehensive overview of your financial health.</p>
+</div>
+<div class="flex items-center gap-2">
+<a class="flex items-center justify-center gap-2 h-10 px-4 rounded-DEFAULT text-sm font-bold bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+<span>Budgets</span>
+</a>
+<a class="flex items-center justify-center gap-2 h-10 px-4 rounded-DEFAULT text-sm font-bold bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:bg-background-light dark:hover:bg-background-dark transition-colors" href="#">
+<span class="material-symbols-outlined">summarize</span>
+<span>Reports</span>
+</a>
+</div>
+</div>
+<div class="flex gap-2 pb-2 border-b border-border-light dark:border-border-dark">
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-DEFAULT bg-primary/20 text-primary pl-4 pr-3">
+<p class="text-sm font-medium leading-normal">This Month</p>
+<span class="material-symbols-outlined">expand_more</span>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-DEFAULT bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:bg-background-light dark:hover:bg-background-dark transition-colors pl-4 pr-3">
+<p class="text-sm font-medium leading-normal">Last 90 Days</p>
+</button>
+<button class="flex h-9 shrink-0 items-center justify-center gap-x-2 rounded-DEFAULT bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark hover:bg-background-light dark:hover:bg-background-dark transition-colors pl-4 pr-3">
+<p class="text-sm font-medium leading-normal">This Year</p>
+</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="flex flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<p class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">Current Balance</p>
+<p class="tracking-tight text-3xl font-bold">$12,450.78</p>
+<p class="text-income text-sm font-medium flex items-center"><span class="material-symbols-outlined text-base">trending_up</span>+2.5%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<p class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">Total Income (Month)</p>
+<p class="tracking-tight text-3xl font-bold">$5,800.00</p>
+<p class="text-income text-sm font-medium flex items-center"><span class="material-symbols-outlined text-base">trending_up</span>+5.2%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<p class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">Total Expenses (Month)</p>
+<p class="tracking-tight text-3xl font-bold">$3,250.50</p>
+<p class="text-expense text-sm font-medium flex items-center"><span class="material-symbols-outlined text-base">trending_down</span>-1.8%</p>
+</div>
+<div class="flex flex-col gap-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<p class="text-base font-medium text-text-light-secondary dark:text-text-dark-secondary">Net Savings</p>
+<p class="tracking-tight text-3xl font-bold">$2,549.50</p>
+<p class="text-income text-sm font-medium flex items-center"><span class="material-symbols-outlined text-base">trending_up</span>+10.1%</p>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+<div class="lg:col-span-2 rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<h3 class="text-lg font-bold mb-4">Income vs. Expense</h3>
+<div class="h-80 flex items-end justify-center">
+<img class="w-full h-full object-contain" data-alt="A bar chart showing monthly income in green versus expenses in red over a seven-month period, with income consistently higher than expenses." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0UYtIijbgwFS_eqoYQgi6QQAxfakJ162CGH1Kx51EEDu7YUD-GGa7fo7xHlphb9KJdFV6Vj3UX5N2pJqiWDGx5BzoZJ7-8TYV-AEFqXVO8HVm2UqL_aYejbTDptfUZtH60gjsus953rzWy9tlValaAe0NrzpAKt4Mqt0cm2_GPWEiEJ2g5u9clbA3Xghk3lYitB51ZAjtkT5IHSwm1bGqzKizz0a_hCcVSLDd3XH5OVhoZYijSLlN4mZsY2FItOKeJ7cIaqvlX5Q"/>
+</div>
+</div>
+<div class="flex flex-col gap-6">
+<div class="rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<h3 class="text-lg font-bold mb-4">Spending by Category</h3>
+<div class="h-40 flex items-center justify-center">
+<img class="w-full h-full object-contain" data-alt="A donut chart showing spending breakdown by category, with Groceries being the largest portion." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA57q6pR5Kg-dm44WTwhjNyIK8EuiVuCzs9EupOQIs44duhEIUdtyBcaHshXZJjbDulHXoGa6KsUyBFXDEpLxEhggZjT1R5zvvd_x2TMUYqvXLMlPwmt1DKftGOsGXRpjIDzxLWoXeNDMZcnY5u0NImzcyNr0A8Yz8ma6ZJtbuZJYG1TagLUgHCZNnqaWqM62ekfKeEYbgDOfolT2NDQe7sz8x-fv6JC_CUG52XTiTXwys6DeLmpn6HN7gPi1LHl0HD3IwWTb3vKf8"/>
+</div>
+</div>
+<div class="rounded-lg p-6 border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<h3 class="text-lg font-bold mb-4">Budget Progress</h3>
+<div class="flex flex-col gap-4">
+<div>
+<div class="flex justify-between text-sm font-medium mb-1">
+<span>Groceries</span>
+<span class="text-text-light-secondary dark:text-text-dark-secondary">$350 / $500</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 70%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-sm font-medium mb-1">
+<span>Dining Out</span>
+<span class="text-text-light-secondary dark:text-text-dark-secondary">$180 / $200</span>
+</div>
+<div class="w-full bg-background-light dark:bg-background-dark rounded-full h-2">
+<div class="bg-primary h-2 rounded-full" style="width: 90%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="rounded-lg border border-border-light dark:border-border-dark bg-surface-light dark:bg-surface-dark">
+<div class="p-6">
+<h3 class="text-lg font-bold">Recent Transactions</h3>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left text-sm">
+<thead class="border-b border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark">
+<tr>
+<th class="px-6 py-3 font-medium text-text-light-secondary dark:text-text-dark-secondary tracking-wider">Date</th>
+<th class="px-6 py-3 font-medium text-text-light-secondary dark:text-text-dark-secondary tracking-wider">Description</th>
+<th class="px-6 py-3 font-medium text-text-light-secondary dark:text-text-dark-secondary tracking-wider">Category</th>
+<th class="px-6 py-3 font-medium text-text-light-secondary dark:text-text-dark-secondary tracking-wider text-right">Amount</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="px-6 py-4 whitespace-nowrap">Oct 26, 2023</td>
+<td class="px-6 py-4 font-medium">Monthly Salary</td>
+<td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-income/10 text-income">Income</span></td>
+<td class="px-6 py-4 text-right font-semibold text-income">+$2,900.00</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="px-6 py-4 whitespace-nowrap">Oct 25, 2023</td>
+<td class="px-6 py-4 font-medium">SuperMart Grocery</td>
+<td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-primary/10 text-primary">Groceries</span></td>
+<td class="px-6 py-4 text-right font-semibold text-expense">-$85.40</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="px-6 py-4 whitespace-nowrap">Oct 24, 2023</td>
+<td class="px-6 py-4 font-medium">Gas Station</td>
+<td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-yellow-500/10 text-yellow-500">Transport</span></td>
+<td class="px-6 py-4 text-right font-semibold text-expense">-$45.00</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="px-6 py-4 whitespace-nowrap">Oct 22, 2023</td>
+<td class="px-6 py-4 font-medium">The Corner Cafe</td>
+<td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-red-500/10 text-red-500">Dining Out</span></td>
+<td class="px-6 py-4 text-right font-semibold text-expense">-$24.80</td>
+</tr>
+<tr>
+<td class="px-6 py-4 whitespace-nowrap">Oct 21, 2023</td>
+<td class="px-6 py-4 font-medium">Freelance Project Payment</td>
+<td class="px-6 py-4"><span class="px-2 py-1 text-xs font-semibold rounded-full bg-income/10 text-income">Income</span></td>
+<td class="px-6 py-4 text-right font-semibold text-income">+$500.00</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</main>
+</div>
+</div>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Subscription Expiration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#137fec",
+              "background-light": "#f6f7f8",
+              "background-dark": "#101922",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {
+              "DEFAULT": "0.25rem",
+              "lg": "0.5rem",
+              "xl": "0.75rem",
+              "full": "9999px"
+            },
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+<div #f6f7f8;"="" %3e%3c="" %3e%3cpath="" 2000="" background-color:="" class="relative flex min-h-screen w-full flex-col items-center justify-center p-4" d="M0 .5 L32 .5 M.5 0 L.5 32" fill="none" height="32" http:="" stroke="%23e2e8f0" stroke-width="2" style="background-image: url('data:image/svg+xml,%3csvg xmlns=" svg"="" svg%3e');="" viewbox="0 0 32 32" width="32" www.w3.org="">
+<!-- Modal Container -->
+<div class="w-full max-w-4xl rounded-xl bg-white dark:bg-gray-900/80 dark:backdrop-blur-sm shadow-2xl dark:shadow-black/50 border border-gray-200 dark:border-gray-700 overflow-hidden">
+<div class="p-8 md:p-10">
+<div class="flex flex-col items-center text-center">
+<div class="flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 dark:bg-amber-900/50 mb-4">
+<span class="material-symbols-outlined text-4xl text-amber-500 dark:text-amber-400">
+                            hourglass_top
+                        </span>
+</div>
+<!-- Headline -->
+<h1 class="text-3xl font-bold tracking-tight text-gray-900 dark:text-white">Your Access is About to Expire!</h1>
+<!-- Body Text -->
+<p class="mt-2 text-gray-600 dark:text-gray-300">
+                        You have <span class="font-bold text-amber-500 dark:text-amber-400">7 days left</span>. Choose a package below to continue using all features without interruption.
+                    </p>
+<!-- Pricing Cards -->
+<div class="mt-8 grid w-full grid-cols-1 gap-4 md:grid-cols-3">
+<!-- Card 1: 30 Days -->
+<div class="flex flex-1 cursor-pointer flex-col gap-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-6 transition-all hover:border-primary/50 hover:shadow-lg dark:hover:border-primary/70">
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold text-gray-900 dark:text-white">30 Days</h2>
+<p class="flex items-baseline gap-1 text-gray-900 dark:text-white">
+<span class="text-4xl font-black tracking-tighter">30.000đ</span>
+<span class="text-sm font-semibold text-gray-500 dark:text-gray-400">/ 30 days</span>
+</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-base text-gray-400 dark:text-gray-500">check_circle</span>
+<span>Basic top-up</span>
+</div>
+</div>
+<!-- Card 2: 90 Days (Popular) -->
+<div class="relative flex flex-1 cursor-pointer flex-col gap-4 rounded-xl border-2 border-primary bg-primary/5 dark:bg-primary/10 p-6 shadow-xl shadow-primary/10 transition-all">
+<div class="absolute -top-3 right-5">
+<p class="rounded-full bg-primary px-3 py-1 text-xs font-medium text-white">Popular</p>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold text-gray-900 dark:text-white">90 Days</h2>
+<p class="flex items-baseline gap-1 text-gray-900 dark:text-white">
+<span class="text-4xl font-black tracking-tighter">85.000đ</span>
+<span class="text-sm font-semibold text-gray-500 dark:text-gray-400">/ 90 days</span>
+</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-primary dark:text-primary-300">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span class="font-medium">Save 5%</span>
+</div>
+</div>
+<!-- Card 3: 365 Days (Best Value) -->
+<div class="relative flex flex-1 cursor-pointer flex-col gap-4 rounded-xl border-2 border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800/50 p-6 transition-all hover:border-primary/50 hover:shadow-lg dark:hover:border-primary/70">
+<div class="absolute -top-3 right-5">
+<p class="rounded-full bg-green-500 px-3 py-1 text-xs font-medium text-white">Best Value</p>
+</div>
+<div class="flex flex-col gap-1">
+<h2 class="text-base font-bold text-gray-900 dark:text-white">365 Days</h2>
+<p class="flex items-baseline gap-1 text-gray-900 dark:text-white">
+<span class="text-4xl font-black tracking-tighter">300.000đ</span>
+<span class="text-sm font-semibold text-gray-500 dark:text-gray-400">/ 365 days</span>
+</p>
+</div>
+<div class="flex items-center gap-2 text-sm text-green-600 dark:text-green-400">
+<span class="material-symbols-outlined text-base">check_circle</span>
+<span class="font-medium">Save over 15%</span>
+</div>
+</div>
+</div>
+<!-- CTA & Secondary Button -->
+<div class="mt-8 flex w-full max-w-md flex-col items-center gap-2">
+<button class="flex h-12 w-full min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-primary px-5 text-base font-bold text-white shadow-lg shadow-primary/30 transition-all hover:bg-primary/90">
+<span>Continue with 85.000đ</span>
+</button>
+<button class="flex h-10 w-full min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-transparent px-4 text-sm font-bold text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">
+<span>Maybe Later</span>
+</button>
+</div>
+<!-- Payment Methods -->
+<div class="mt-8 flex flex-col items-center gap-3">
+<p class="text-xs text-gray-400 dark:text-gray-500">SECURE PAYMENTS</p>
+<div class="flex items-center space-x-4">
+<img class="h-6" data-alt="MoMo payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDeePC3rkixHhsncVuDtV5oY-78aUG1clMef7n-b6gSgZegNw7JqxClOG8m4db83upgX5MzGiD6HkdbNHVbRENS0I0gzhLUQtosEyBNqmCubBQhFADW6QdeFqAfCr1cnZK4ZcZK4LdjmHFgf3OPc83lcyPtfGWLvtyp8DCCzcMYQoaxfuM8hIenMJVKBZMmYfQ5QTkegE0etZqVg0D3fflYWx0RZNLo0PqdcTJpEEQyFN2qBEIJMHlZstcnfpPq_PxTaGRCi7bST3s"/>
+<img class="h-6" data-alt="ZaloPay payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCW8dFXnbQvSVeezSq4ChUfFiJQTZ8GO27rXKQqRJE2nAXIU2LqdAnrfB32UhCbq6HwVZPSSBgwsuNE4URUHav0HsBTbncIdi14mz7QzOA9VZC6Ne2KUuxt3yBVCQVv-whBAKM8GUc3v0t328aJ-sg-OyqgCjRfEjzIfYwujYrfASzv5BG-0YZ_Dqe56mYxdiyviGkEbKOt69ZV_Ih3f9PTNNfbcdnlm2IEg3KeRs-GQfsATwl1-VtW4CDRLVi-wWF3PSkELn90vbg"/>
+<img class="h-6" data-alt="VNPay payment logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdcZzuQNV56_n-H_kdxcGvmY7xWMZjMt0VLrL_P4NoZqeFwYsgoiyLmOzCv9G04KOo15n93FJVFtvJfg-dL3pZ3W0bBMq_Cpk-XBDVuzBclImrU7jFbZ9PeBjP3xA1yiwmpjKEjCYQDXRcPj_VNdNone_LvzNT9XckC_PlYa_9G78YUWNM0v64EXeAMTqERvcDM7dzsM3dCNKNMlx9udJC10HPWjaQK8BYGGtaYd5riaKpJMyTX9aoQDjwXttXSpaRCceCrgjmJcA"/>
+<div class="flex items-center gap-1.5 text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-lg">account_balance</span>
+<span class="text-sm font-medium">Bank</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body></html>

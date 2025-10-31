@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Lịch sử sử dụng &amp; Thanh toán - Planner App</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#4A90E2",
+            "background-light": "#F9FAFB",
+            "background-dark": "#1F2937",
+            "card-light": "#FFFFFF",
+            "card-dark": "#111827",
+            "text-primary-light": "#1F2937",
+            "text-primary-dark": "#F9FAFB",
+            "text-secondary-light": "#6B7280",
+            "text-secondary-dark": "#9CA3AF",
+            "border-light": "#E5E7EB",
+            "border-dark": "#374151",
+            "success": "#50E3C2",
+            "danger": "#EF4444",
+            "warning": "#F59E0B"
+          },
+          fontFamily: {
+            "display": ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            "DEFAULT": "0.5rem",
+            "lg": "0.75rem",
+            "xl": "1rem",
+            "full": "9999px"
+          },
+        },
+      },
+    }
+  </script>
+<style>
+    body {
+        font-family: 'Inter', sans-serif;
+    }
+    .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark font-display">
+<div class="relative flex h-auto min-h-screen w-full flex-col">
+<!-- TopNavBar -->
+<header class="sticky top-0 z-10 flex items-center justify-center border-b border-border-light dark:border-border-dark bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm">
+<div class="flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
+<div class="flex items-center gap-4">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold">Planner App</h2>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-full bg-background-light dark:bg-background-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-xl">settings</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB3JP6jfnPfbo9LKluttULiXzmDpsBhvf11c_YwsZHNeC5e5nyjDR8MBbnTk7DlU7qiBv0O_DZ-4wKBSiJl1DZhZ62JeYnx1G64DkLD1EmT4D2qAtB-ujxTYBcb2giqxRB_4i3H6Ts_H7YrfhXuLFj8ZKwv27xqZv9xizhM9-s97Wusd7AqTuROd9soIO-kxP4MjpqVIYBq_LfcxeYFW2hSaDGcC_z3a4UPbSrA_ZDdNy0O3hFjMIbRWAkhikgweDt2gnwK3jaiplk");'></div>
+</div>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex w-full flex-1 justify-center py-8 sm:py-12">
+<div class="flex w-full max-w-5xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
+<!-- PageHeading & CTA -->
+<div class="flex flex-wrap items-center justify-between gap-4">
+<h1 class="text-3xl font-black tracking-tighter sm:text-4xl">Lịch sử sử dụng &amp; Thanh toán</h1>
+<button class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90">
+<span class="material-symbols-outlined text-lg">add_card</span>
+            Nạp thêm ngày
+          </button>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+<div class="flex flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
+<p class="text-base font-medium text-text-secondary-light dark:text-text-secondary-dark">Số ngày còn lại</p>
+<p class="text-3xl font-bold tracking-tight text-primary">25</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
+<p class="text-base font-medium text-text-secondary-light dark:text-text-secondary-dark">Tổng số ngày đã nạp</p>
+<p class="text-3xl font-bold tracking-tight">120</p>
+</div>
+<div class="flex flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
+<p class="text-base font-medium text-text-secondary-light dark:text-text-secondary-dark">Ngày hết hạn</p>
+<p class="text-3xl font-bold tracking-tight">30/09/2024</p>
+</div>
+</div>
+<!-- Tabs & History -->
+<div class="flex flex-col">
+<!-- Tabs -->
+<div class="border-b border-border-light dark:border-border-dark">
+<div class="flex gap-8 px-4">
+<a class="flex flex-col items-center justify-center border-b-2 border-b-primary pb-3 pt-2" href="#">
+<p class="text-sm font-bold text-primary">Lịch sử sử dụng</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-b-transparent pb-3 pt-2 text-text-secondary-light dark:text-text-secondary-dark hover:text-text-primary-light dark:hover:text-text-primary-dark" href="#">
+<p class="text-sm font-bold">Lịch sử thanh toán</p>
+</a>
+</div>
+</div>
+<!-- History Content -->
+<div class="mt-6 flex flex-col gap-6 rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
+<!-- Toolbar -->
+<div class="flex flex-wrap items-center justify-between gap-4 border-b border-border-light dark:border-border-dark px-6 py-4">
+<h3 class="text-lg font-bold">Hoạt động gần đây</h3>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-2 whitespace-nowrap rounded-lg border border-border-light dark:border-border-dark bg-transparent px-3 py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Last 30 days</span>
+<span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+<button class="inline-flex items-center gap-2 whitespace-nowrap rounded-lg border border-border-light dark:border-border-dark bg-transparent px-3 py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-lg">file_download</span>
+<span>Export</span>
+</button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="min-w-full text-left text-sm">
+<thead class="border-b border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark">
+<tr>
+<th class="px-6 py-3 font-medium" scope="col">Ngày</th>
+<th class="px-6 py-3 font-medium" scope="col">Hoạt động</th>
+<th class="px-6 py-3 font-medium text-right" scope="col">Số ngày trừ</th>
+<th class="px-6 py-3 font-medium text-right" scope="col">Số ngày còn lại</th>
+</tr>
+</thead>
+<tbody>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="whitespace-nowrap px-6 py-4">05/09/2024</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">-1</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">25</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="whitespace-nowrap px-6 py-4">04/09/2024</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">-1</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">26</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="whitespace-nowrap px-6 py-4">03/09/2024</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">-1</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">27</td>
+</tr>
+<tr class="border-b border-border-light dark:border-border-dark">
+<td class="whitespace-nowrap px-6 py-4">02/09/2024</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">-1</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">28</td>
+</tr>
+<tr>
+<td class="whitespace-nowrap px-6 py-4">01/09/2024</td>
+<td class="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">-1</td>
+<td class="whitespace-nowrap px-6 py-4 text-right">29</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between border-t border-border-light dark:border-border-dark px-6 py-4">
+<span class="text-sm text-text-secondary-light dark:text-text-secondary-dark">Showing 1 to 5 of 97 results</span>
+<div class="inline-flex items-center gap-2">
+<button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-50 disabled:pointer-events-none" disabled="">
+<span class="material-symbols-outlined text-xl">chevron_left</span>
+</button>
+<button class="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5">
+<span class="material-symbols-outlined text-xl">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>
