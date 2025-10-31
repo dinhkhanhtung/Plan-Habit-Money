@@ -1,14 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { cacheOptimizationMiddleware } from '@/lib/cache'
-import { securityMiddleware } from '@/lib/middleware/security'
 
 export async function middleware(request: NextRequest) {
-  // Apply security middleware first
-  const securityResponse = await securityMiddleware(request);
-  if (securityResponse instanceof NextResponse) {
-    return securityResponse;
-  }
-
   // Apply cache optimization middleware
   return cacheOptimizationMiddleware(request)
 }

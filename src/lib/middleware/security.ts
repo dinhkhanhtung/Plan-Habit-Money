@@ -1,22 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import rateLimit from 'express-rate-limit';
 
-// Rate limiting configuration
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: 'Too many requests from this IP, please try again later.',
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-const apiLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000, // Limit each IP to 1000 API requests per windowMs
-  message: 'Too many API requests from this IP, please try again later.',
-  standardHeaders: true,
-  legacyHeaders: false,
-});
 
 // Input sanitization function
 export function sanitizeInput(input: string): string {
@@ -48,39 +31,6 @@ export function securityHeadersMiddleware(request: NextRequest): NextResponse {
   return response;
 }
 
-// Rate limiting middleware
-export async function rateLimitMiddleware(request: NextRequest): Promise<NextResponse | null> {
-  const ip = request.headers.get('x-forwarded-for') || request.headers.get('x-real-ip') || 'unknown';
-
-  // Apply different limits based on path
-  if (request.nextUrl.pathname.startsWith('/api/')) {
-    // Check API rate limit
-    const limitResult = await new Promise((resolve) => {
-      apiLimiter(request as any, {} as any, resolve);
-    });
-
-    if (limitResult && typeof limitResult === 'object' && 'statusCode' in limitResult) {
-      return NextResponse.json(
-        { error: 'Too many API requests' },
-        { status: 429 }
-      );
-    }
-  } else {
-    // Check general rate limit
-    const limitResult = await new Promise((resolve) => {
-      limiter(request as any, {} as any, resolve);
-    });
-
-    if (limitResult && typeof limitResult === 'object' && 'statusCode' in limitResult) {
-      return NextResponse.json(
-        { error: 'Too many requests' },
-        { status: 429 }
-      );
-    }
-  }
-
-  return null;
-}
 
 // Request size validation
 export function validateRequestSize(request: NextRequest): NextResponse | null {
@@ -99,10 +49,6 @@ export async function securityMiddleware(request: NextRequest): Promise<NextResp
   // Check request size
   const sizeValidation = validateRequestSize(request);
   if (sizeValidation) return sizeValidation;
-
-  // Apply rate limiting
-  const rateLimitResponse = await rateLimitMiddleware(request);
-  if (rateLimitResponse) return rateLimitResponse;
 
   // Apply security headers
   return securityHeadersMiddleware(request);
