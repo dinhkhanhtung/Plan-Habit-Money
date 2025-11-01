@@ -2,8 +2,7 @@
 
 import { useState, Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import Sidebar from '@/components/Sidebar'
-import Header from '@/components/Header'
+import AppLayout from '@/components/AppLayout'
 import { CardSkeleton } from '@/components/SkeletonLoader'
 import ExpirationNotification from '@/components/expiration/ExpirationNotification'
 import CountdownTimer from '@/components/expiration/CountdownTimer'
@@ -28,11 +27,8 @@ export default function DashboardPage() {
 
   return (
     <ProtectedRoute>
-      <div className="relative flex min-h-screen w-full">
-        <Sidebar />
-        <main className="flex-1 flex flex-col lg:ml-0 md:ml-0">
-          <Header title="Dashboard Tổng quan" />
-          <div className="flex-1 overflow-y-auto p-10">
+      <AppLayout title="Dashboard Tổng quan">
+        <div className="p-10">
             {/* Expiration Banner */}
             {isExpiringSoon && (
               <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
@@ -80,15 +76,14 @@ export default function DashboardPage() {
               </Suspense>
             </div>
           </div>
-        </main>
 
-        {/* Expiration Notification Modal */}
-        <ExpirationNotification
-          daysRemaining={daysRemaining}
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-        />
-      </div>
+          {/* Expiration Notification Modal */}
+          <ExpirationNotification
+            daysRemaining={daysRemaining}
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+          />
+        </AppLayout>
     </ProtectedRoute>
   )
 }

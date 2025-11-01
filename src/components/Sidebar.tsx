@@ -14,11 +14,25 @@ const bottomNavigation = [
   { name: 'Settings', href: '/settings', icon: 'settings' },
 ]
 
-export default function Sidebar() {
+interface SidebarProps {
+  isOpen?: boolean
+  onClose?: () => void
+}
+
+export default function Sidebar({ isOpen = true, onClose }: SidebarProps) {
   const pathname = usePathname()
 
   return (
-    <aside className="flex w-64 flex-col bg-white dark:bg-background-dark border-r border-gray-200/60 dark:border-white/10 p-4 md:translate-x-0 translate-x-[-100%] transition-transform duration-300 ease-in-out fixed md:relative inset-y-0 left-0 z-50 md:z-auto">
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black/50 z-40 md:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside className={`flex w-64 flex-col bg-white dark:bg-background-dark border-r border-gray-200/60 dark:border-white/10 p-4 transition-transform duration-300 ease-in-out fixed md:relative inset-y-0 left-0 z-50 md:z-auto ${isOpen ? 'translate-x-0' : '-translate-x-full md:translate-x-0'}`}>
       <div className="flex items-center gap-2.5 p-3 mb-4">
         <div className="size-8 text-primary">
           <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -85,5 +99,6 @@ export default function Sidebar() {
         ))}
       </div>
     </aside>
+    </>
   )
 }
