@@ -75,6 +75,9 @@ model WeeklyPlannerTask {
   updatedAt   DateTime @updatedAt
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@index([userId, completed])
 }
 
 model Goal {
@@ -88,6 +91,8 @@ model Goal {
   updatedAt   DateTime @updatedAt
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, completed])
 }
 
 model Habit {
@@ -102,6 +107,8 @@ model Habit {
 
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
   logs        HabitLog[]
+
+  @@index([userId, createdAt])
 }
 
 model HabitLog {
@@ -112,6 +119,9 @@ model HabitLog {
   createdAt DateTime @default(now())
 
   habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+
+  @@index([habitId, date])
+  @@index([habitId, completed])
 }
 
 model Budget {
@@ -126,6 +136,8 @@ model Budget {
   updatedAt   DateTime @updatedAt
 
   user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, category])
 }
 
 model FinancialTransaction {
@@ -140,6 +152,10 @@ model FinancialTransaction {
   updatedAt   DateTime @updatedAt
 
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, date])
+  @@index([userId, type])
+  @@index([userId, category])
 }
 
 model UserSettings {

@@ -11,6 +11,7 @@ const mainNavigation = [
 ]
 
 const bottomNavigation = [
+  { name: 'Help', href: '/help', icon: 'help' },
   { name: 'Settings', href: '/settings', icon: 'settings' },
 ]
 

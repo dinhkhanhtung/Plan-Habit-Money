@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { sendPasswordResetEmail } from '@/lib/email'
 import crypto from 'crypto'
 
 export async function POST(request: NextRequest) {
@@ -26,20 +27,19 @@ export async function POST(request: NextRequest) {
     // Save reset token to database
     await prisma.verificationToken.create({
       data: {
-        identifier: `reset-${user.id}`,
+        identifier: `reset-${user.email}`,
         token: resetToken,
         expires: resetTokenExpiry,
       }
     })
 
-    // In a real application, you would send an email here
-    // For now, we'll just log the reset link
-    const resetLink = `${process.env.NEXTAUTH_URL}/reset-password?token=${resetToken}&email=${email}`
-
-    console.log('Password reset link:', resetLink)
+    // Send password reset email
+    sendPasswordResetEmail(user.email, resetToken).catch((error) => {
+      console.error('Failed to send password reset email:', error);
+    });
 
     return NextResponse.json(
-      { message: 'Email đặt lại mật khẩu đã được gửi. Vui lòng kiểm tra hộp thư của bạn.' },
+      { message: 'Nếu email tồn tại trong hệ thống, bạn sẽ nhận được hướng dẫn đặt lại mật khẩu.' },
       { status: 200 }
     )
   } catch (error) {

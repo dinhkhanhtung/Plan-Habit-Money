@@ -132,9 +132,4 @@ export function trackError(error: Error, context?: any) {
   }
 }
 
-// Global declarations for TypeScript
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void
-  }
-}
+// Global declarations removed - already defined in gtag.ts
