@@ -37,7 +37,7 @@ export default function UsageSummaryCards({ stats }: UsageSummaryCardsProps) {
       </div>
       <div className="flex flex-col gap-2 rounded-xl bg-card-light dark:bg-card-dark p-6 border border-border-light dark:border-border-dark">
         <p className="text-base font-medium text-text-secondary-light dark:text-text-secondary-dark">
-          Tổng số ngày đã nạp
+          Tổng số ngày đã sử dụng
         </p>
         <p className="text-3xl font-bold tracking-tight">
           {stats.totalUsed}

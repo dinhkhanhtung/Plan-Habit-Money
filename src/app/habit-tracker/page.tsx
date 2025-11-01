@@ -117,8 +117,9 @@ const HabitTracker: React.FC = () => {
       <div className="flex-1 flex flex-col">
         <Header title="Habit Tracker" />
         <main className="flex-1 px-4 sm:px-6 lg:px-10 py-5 overflow-y-auto">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-wrap justify-between gap-4 py-6">
+            <div className="max-w-6xl mx-auto">
+              <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
+                <div className="flex flex-wrap justify-between gap-4 py-6">
               <div className="flex flex-col gap-2">
                 <h1 className="text-slate-800 dark:text-slate-200 text-4xl font-black leading-tight tracking-[-0.033em]">
                   My Habits
@@ -134,6 +135,7 @@ const HabitTracker: React.FC = () => {
                 <span className="material-symbols-outlined">add</span>
                 <span className="truncate">Add New Habit</span>
               </button>
+              </div>
             </div>
 
             <ProgressStats completionRate={completionRate} />

@@ -7,6 +7,7 @@ import ProtectedRoute from '@/components/ProtectedRoute';
 import Sidebar from '@/components/Sidebar';
 import Header from '@/components/Header';
 import UsageSummaryCards from '@/components/history/UsageSummaryCards';
+import UsageHistoryTable from '@/components/history/UsageHistoryTable';
 import TransactionHistoryTable from '@/components/history/TransactionHistoryTable';
 import ExportOptions from '@/components/history/ExportOptions';
 
@@ -63,6 +64,10 @@ export default function HistoryPage() {
   const [statusFilter, setStatusFilter] = useState('all');
   const [sortBy, setSortBy] = useState('createdAt');
   const [sortOrder, setSortOrder] = useState('desc');
+
+  // Query parameters for usage
+  const [usageSortBy, setUsageSortBy] = useState('date');
+  const [usageSortOrder, setUsageSortOrder] = useState('desc');
 
   useEffect(() => {
     if (status === 'unauthenticated') {
@@ -153,6 +158,11 @@ export default function HistoryPage() {
     setPage(1); // Reset to first page when filtering
   };
 
+  const handleUsageSort = (newSortBy: string, newSortOrder: string) => {
+    setUsageSortBy(newSortBy);
+    setUsageSortOrder(newSortOrder);
+  };
+
   if (status === 'loading' || loading) {
     return (
       <ProtectedRoute>
@@ -217,42 +227,27 @@ export default function HistoryPage() {
             {activeTab === 'usage' && usageStats && (
               <div className="space-y-6">
                 <UsageSummaryCards stats={usageStats} />
-                <div className="flex flex-col gap-6 rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark">
-                  <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border-light dark:border-border-dark px-6 py-4">
-                    <h3 className="text-lg font-bold">Hoạt động gần đây</h3>
-                  </div>
-                  <div className="overflow-x-auto">
-                    <table className="min-w-full text-left text-sm">
-                      <thead className="border-b border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark">
-                        <tr>
-                          <th className="px-6 py-3 font-medium">Ngày</th>
-                          <th className="px-6 py-3 font-medium">Hoạt động</th>
-                          <th className="px-6 py-3 font-medium text-right">Số ngày trừ</th>
-                          <th className="px-6 py-3 font-medium text-right">Số ngày còn lại</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {usageStats.totalUsed === 0 ? (
-                          <tr>
-                            <td colSpan={4} className="px-6 py-8 text-center text-text-secondary-light dark:text-text-secondary-dark">
-                              Chưa có hoạt động sử dụng nào
-                            </td>
-                          </tr>
-                        ) : (
-                          // This would need actual usage logs - for now showing summary
-                          <tr className="border-b border-border-light dark:border-border-dark">
-                            <td className="whitespace-nowrap px-6 py-4">
-                              {usageStats.lastUsedDate ? new Date(usageStats.lastUsedDate).toLocaleDateString('vi-VN') : 'N/A'}
-                            </td>
-                            <td className="whitespace-nowrap px-6 py-4 font-medium">Sử dụng ngày</td>
-                            <td className="whitespace-nowrap px-6 py-4 text-right">-1</td>
-                            <td className="whitespace-nowrap px-6 py-4 text-right">{usageStats.daysRemaining}</td>
-                          </tr>
-                        )}
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
+                <UsageHistoryTable
+                  records={[
+                    {
+                      id: '1',
+                      date: usageStats.lastUsedDate || new Date().toISOString(),
+                      activity: 'Sử dụng ngày',
+                      daysDeducted: -1,
+                      daysRemaining: usageStats.daysRemaining
+                    }
+                  ]}
+                  pagination={{
+                    page: 1,
+                    limit: 10,
+                    total: usageStats.totalUsed,
+                    totalPages: Math.ceil(usageStats.totalUsed / 10),
+                    hasNext: false,
+                    hasPrev: false
+                  }}
+                  onPageChange={handlePageChange}
+                  onSort={handleUsageSort}
+                />
               </div>
             )}
 

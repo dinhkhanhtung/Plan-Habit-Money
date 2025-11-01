@@ -9,27 +9,27 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#13c8ec',
-        gray: {
-          50: '#f8fafc',
-          100: '#f1f5f9',
-          200: '#e2e8f0',
-          300: '#cbd5e1',
-          400: '#94a3b8',
-          500: '#64748b',
-          600: '#475569',
-          700: '#334155',
-          800: '#1e293b',
-          900: '#0f172a',
-        },
+        primary: '#4FD1C5',
+        income: '#48BB78',
+        expense: '#F56565',
         background: {
-          light: '#f6f8f8',
-          dark: '#101f22',
+          light: '#F7FAFC',
+          dark: '#1A202C'
+        },
+        text: {
+          'light-primary': '#2D3748',
+          'dark-primary': '#F7FAFC',
+          'light-secondary': '#A0AEC0',
+          'dark-secondary': '#A0AEC0'
+        },
+        border: {
+          light: '#E2E8F0',
+          dark: '#4A5568'
         },
         surface: {
-          light: '#ffffff',
-          dark: '#18282b',
-        },
+          light: '#FFFFFF',
+          dark: '#2D3748'
+        }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

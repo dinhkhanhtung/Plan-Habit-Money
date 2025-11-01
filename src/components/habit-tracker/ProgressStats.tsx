@@ -22,12 +22,11 @@ const ProgressStats: React.FC<ProgressStatsProps> = ({ completionRate }) => {
           </p>
         </div>
         <div className="w-full xl:w-2/3 h-40 bg-center bg-no-repeat bg-contain">
-          <div className="w-full h-full bg-gradient-to-r from-primary/20 to-primary/10 rounded-lg flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-6xl font-bold text-primary mb-2">{completionRate}%</div>
-              <div className="text-sm text-slate-600 dark:text-slate-400">Weekly Goal</div>
-            </div>
-          </div>
+          <img 
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3S2vC4PnoRMTKrMq5rUcygBsrw5oxZ3PT3x_V7oVcp1CeYJs1IlfzD3kFV2SaP9wxoqKnYavKECrM2NvCbhvlTPaVmWwVNEFamKoMBd53D2sojgbqmE1ebxP_wW0-FAOjBKcZxFDpBr7AomlTI0ntxiCLwyCQibU3Wh_-PLxVkOvhT9_XjGhCQ8qalU-kPCTEMLaIWQgRBGwtkUGAQlg0oJb-XT6O0rW2ayH4IbJ7LlcbRHWXDX7CrehQCbYwoOyMIMouy7o7MtI"
+            alt="A chart showing weekly habit completion statistics"
+            className="w-full h-full object-contain"
+          />
         </div>
       </div>
     </div>

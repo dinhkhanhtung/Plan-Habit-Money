@@ -41,7 +41,8 @@ export default function SupportPage() {
         <Header title="Support & FAQ" />
         <div className="flex-1 overflow-y-auto p-8">
           <div className="max-w-4xl mx-auto">
-            <div className="flex flex-wrap justify-between gap-3 mb-8">
+            <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
+              <div className="flex flex-wrap justify-between gap-3 mb-8">
               <div>
                 <p className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]">
                   Support & FAQ
@@ -49,6 +50,7 @@ export default function SupportPage() {
                 <p className="text-text-muted-light dark:text-text-muted-dark text-lg mt-2">
                   We're here to help. Find answers to your questions below.
                 </p>
+                </div>
               </div>
             </div>
 

@@ -176,24 +176,26 @@ export default function WeeklyPlannerPage() {
                 })}
               </h2>
 
-              <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-                <CalendarGrid
-                  tasks={tasks}
-                  onAddTask={handleAddTask}
-                  onEditTask={handleEditTask}
-                  onToggleTaskCompletion={handleToggleTaskCompletion}
-                />
-                <DragOverlay>
-                  {activeTask ? (
-                    <TaskCard
-                      task={activeTask}
-                      onEdit={() => {}}
-                      onToggleCompletion={() => {}}
-                      isDragging
-                    />
-                  ) : null}
-                </DragOverlay>
-              </DndContext>
+              <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
+                <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+                  <CalendarGrid
+                    tasks={tasks}
+                    onAddTask={handleAddTask}
+                    onEditTask={handleEditTask}
+                    onToggleTaskCompletion={handleToggleTaskCompletion}
+                  />
+                  <DragOverlay>
+                    {activeTask ? (
+                      <TaskCard
+                        task={activeTask}
+                        onEdit={() => {}}
+                        onToggleCompletion={() => {}}
+                        isDragging
+                      />
+                    ) : null}
+                  </DragOverlay>
+                </DndContext>
+              </div>
             </div>
           </div>
         </main>

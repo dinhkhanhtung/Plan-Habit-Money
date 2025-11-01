@@ -105,7 +105,7 @@ export default function TransactionHistoryTable({
           <select
             value={statusFilter}
             onChange={(e) => handleFilterChange(e.target.value)}
-            className="px-3 py-2 rounded-lg border border-border-light dark:border-border-dark bg-background-light dark:bg-background-dark text-text-primary-light dark:text-text-primary-dark"
+            className="inline-flex items-center gap-2 whitespace-nowrap rounded-lg border border-border-light dark:border-border-dark bg-transparent px-3 py-2 text-sm font-medium text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5"
           >
             <option value="all">Tất cả trạng thái</option>
             <option value="succeeded">Thành công</option>
@@ -206,7 +206,7 @@ export default function TransactionHistoryTable({
             <button
               onClick={() => onPageChange(pagination.page + 1)}
               disabled={!pagination.hasNext}
-              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5 disabled:opacity-50 disabled:pointer-events-none"
+              className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border-light dark:border-border-dark text-text-secondary-light dark:text-text-secondary-dark hover:bg-black/5 dark:hover:bg-white/5"
             >
               <span className="material-symbols-outlined text-xl">chevron_right</span>
             </button>
