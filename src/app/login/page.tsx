@@ -35,7 +35,7 @@ export default function LoginPage() {
             </div>
             <div className="flex w-full flex-col justify-center bg-background-light p-8 dark:bg-[#152427] sm:p-12 lg:w-1/2">
               <div className="flex w-full flex-col items-center">
-                <span className="material-symbols-outlined text-5xl text-primary">task_alt</span>
+                <span className="material-symbols-outlined text-5xl text-primary">check_circle</span>
               </div>
               <AuthForm
                 type="login"

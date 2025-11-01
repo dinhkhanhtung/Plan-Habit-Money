@@ -4,6 +4,8 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import ProtectedRoute from '@/components/ProtectedRoute';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
 import UsageSummaryCards from '@/components/history/UsageSummaryCards';
 import TransactionHistoryTable from '@/components/history/TransactionHistoryTable';
 import ExportOptions from '@/components/history/ExportOptions';
@@ -163,39 +165,27 @@ export default function HistoryPage() {
 
   return (
     <ProtectedRoute>
-      <div className="min-h-screen bg-background-light dark:bg-background-dark">
-        {/* Header similar to design */}
-        <header className="sticky top-0 z-10 flex items-center justify-center border-b border-border-light dark:border-border-dark bg-card-light/80 dark:bg-card-dark/80 backdrop-blur-sm">
-          <div className="flex w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 py-3">
-            <div className="flex items-center gap-4">
-              <div className="size-6 text-primary">
-                <svg fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-                  <path clip-rule="evenodd" d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" fill="currentColor" fill-rule="evenodd"></path>
-                </svg>
+      <div className="flex h-screen w-full">
+        <Sidebar />
+        <main className="flex-1 flex flex-col">
+          <Header title="Lịch sử sử dụng & Thanh toán" />
+          <div className="flex-1 overflow-y-auto p-8">
+            <div className="max-w-5xl mx-auto">
+              {/* Page Heading */}
+              <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+                <div>
+                  <h1 className="text-text-light dark:text-text-dark text-3xl font-black tracking-tighter sm:text-4xl">
+                    Lịch sử sử dụng & Thanh toán
+                  </h1>
+                </div>
+                <button
+                  onClick={() => router.push('/pricing')}
+                  className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90"
+                >
+                  <span className="material-symbols-outlined text-lg">add_card</span>
+                  Nạp thêm ngày
+                </button>
               </div>
-              <h2 className="text-lg font-bold">Planner App</h2>
-            </div>
-            <div className="flex items-center gap-4">
-              <button
-                onClick={() => router.push('/pricing')}
-                className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-5 py-3 text-sm font-bold text-white shadow-sm transition-colors hover:bg-primary/90"
-              >
-                <span className="material-symbols-outlined text-lg">add_card</span>
-                Nạp thêm ngày
-              </button>
-            </div>
-          </div>
-        </header>
-
-        {/* Main Content */}
-        <main className="flex w-full flex-1 justify-center py-8 sm:py-12">
-          <div className="flex w-full max-w-5xl flex-col gap-8 px-4 sm:px-6 lg:px-8">
-            {/* Page Heading */}
-            <div className="flex flex-wrap items-center justify-between gap-4">
-              <h1 className="text-3xl font-black tracking-tighter sm:text-4xl">
-                Lịch sử sử dụng & Thanh toán
-              </h1>
-            </div>
 
             {/* Tabs */}
             <div className="border-b border-border-light dark:border-border-dark">
@@ -287,6 +277,7 @@ export default function HistoryPage() {
                 <p className="text-danger">{error}</p>
               </div>
             )}
+            </div>
           </div>
         </main>
       </div>

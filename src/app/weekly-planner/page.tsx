@@ -7,6 +7,9 @@ import { TaskCard } from '@/components/weekly-planner/TaskCard';
 import { TaskModal } from '@/components/weekly-planner/TaskModal';
 import { GoalsSidebar } from '@/components/weekly-planner/GoalsSidebar';
 import { WeekNavigation } from '@/components/weekly-planner/WeekNavigation';
+import Sidebar from '@/components/Sidebar';
+import Header from '@/components/Header';
+import ProtectedRoute from '@/components/ProtectedRoute';
 
 export interface Task {
   id: string;
@@ -148,66 +151,67 @@ export default function WeeklyPlannerPage() {
   };
 
   return (
-    <div className="flex h-screen w-full bg-background-light dark:bg-background-dark">
-      {/* Sidebar would go here if needed */}
-      <div className="flex-1 flex flex-col overflow-hidden">
-        <main className="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-3 mb-4">
-              <p className="text-text-light dark:text-text-dark text-2xl sm:text-3xl lg:text-4xl font-black leading-tight tracking-[-0.033em]">
-                My Week
-              </p>
-              <WeekNavigation
-                currentWeekStart={currentWeekStart}
-                onWeekChange={setCurrentWeekStart}
-              />
-            </div>
-            <h2 className="text-text-light dark:text-text-dark tracking-light text-2xl font-bold leading-tight mb-6">
-              {currentWeekStart.toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-              })} - {new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', {
-                month: 'long',
-                day: 'numeric',
-                year: 'numeric',
-              })}
-            </h2>
+    <ProtectedRoute>
+      <div className="flex h-screen w-full">
+        <Sidebar />
+        <main className="flex-1 flex flex-col">
+          <Header title="Weekly Planner" />
+          <div className="flex-1 overflow-y-auto p-8">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-wrap justify-between items-center gap-3 mb-4">
+                <p className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">My Week</p>
+                <WeekNavigation
+                  currentWeekStart={currentWeekStart}
+                  onWeekChange={setCurrentWeekStart}
+                />
+              </div>
+              <h2 className="text-text-light dark:text-text-dark tracking-light text-2xl font-bold leading-tight mb-6">
+                {currentWeekStart.toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                })} - {new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric',
+                })}
+              </h2>
 
-            <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-              <CalendarGrid
-                tasks={tasks}
-                onAddTask={handleAddTask}
-                onEditTask={handleEditTask}
-                onToggleTaskCompletion={handleToggleTaskCompletion}
-              />
-              <DragOverlay>
-                {activeTask ? (
-                  <TaskCard
-                    task={activeTask}
-                    onEdit={() => {}}
-                    onToggleCompletion={() => {}}
-                    isDragging
-                  />
-                ) : null}
-              </DragOverlay>
-            </DndContext>
+              <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+                <CalendarGrid
+                  tasks={tasks}
+                  onAddTask={handleAddTask}
+                  onEditTask={handleEditTask}
+                  onToggleTaskCompletion={handleToggleTaskCompletion}
+                />
+                <DragOverlay>
+                  {activeTask ? (
+                    <TaskCard
+                      task={activeTask}
+                      onEdit={() => {}}
+                      onToggleCompletion={() => {}}
+                      isDragging
+                    />
+                  ) : null}
+                </DragOverlay>
+              </DndContext>
+            </div>
           </div>
         </main>
+
+        <GoalsSidebar
+          goals={goals}
+          onUpdateProgress={handleUpdateGoalProgress}
+        />
+
+        <TaskModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSave={handleSaveTask}
+          onDelete={handleDeleteTask}
+          task={selectedTask}
+          dayIndex={selectedTask?.dayIndex}
+        />
       </div>
-
-      <GoalsSidebar
-        goals={goals}
-        onUpdateProgress={handleUpdateGoalProgress}
-      />
-
-      <TaskModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        onSave={handleSaveTask}
-        onDelete={handleDeleteTask}
-        task={selectedTask}
-        dayIndex={selectedTask?.dayIndex}
-      />
-    </div>
+    </ProtectedRoute>
   );
 }

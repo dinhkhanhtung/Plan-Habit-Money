@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useMemo } from "react";
-import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import Header from "@/components/Header";
 import { SearchInput } from "@/components/support/SearchInput";
 import { CategoryTabs } from "@/components/support/CategoryTabs";
 import { FAQAccordion } from "@/components/support/FAQAccordion";
@@ -35,20 +35,21 @@ export default function SupportPage() {
   }, [selectedCategory, searchQuery]);
 
   return (
-    <div className="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
-      <div className="relative flex h-auto min-h-screen w-full flex-col group/design-root overflow-x-hidden">
-        <div className="layout-container flex h-full grow flex-col">
-          <Header title="Planner App" />
-          <Sidebar />
-
-          <main className="mt-8 ml-64">
-            <div className="flex flex-wrap justify-between gap-3 p-4">
-              <p className="text-gray-900 dark:text-white text-4xl font-black leading-tight tracking-[-0.033em] w-full">
-                Support & FAQ
-              </p>
-              <p className="text-gray-500 dark:text-gray-400 text-lg w-full">
-                We're here to help. Find answers to your questions below.
-              </p>
+    <div className="flex h-screen w-full">
+      <Sidebar />
+      <main className="flex-1 flex flex-col">
+        <Header title="Support & FAQ" />
+        <div className="flex-1 overflow-y-auto p-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="flex flex-wrap justify-between gap-3 mb-8">
+              <div>
+                <p className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em]">
+                  Support & FAQ
+                </p>
+                <p className="text-text-muted-light dark:text-text-muted-dark text-lg mt-2">
+                  We're here to help. Find answers to your questions below.
+                </p>
+              </div>
             </div>
 
             <SearchInput
@@ -67,16 +68,16 @@ export default function SupportPage() {
 
             <ContactInfo contact={contactInfo} />
 
-            <footer className="mt-12 text-center text-gray-500 dark:text-gray-400 text-sm py-8">
+            <footer className="mt-12 text-center text-text-muted-light dark:text-text-muted-dark text-sm py-8">
               <div className="flex justify-center gap-6">
                 <a className="hover:text-primary" href="#">Terms of Service</a>
                 <a className="hover:text-primary" href="#">Privacy Policy</a>
               </div>
               <p className="mt-4">© 2024 Planner App. All rights reserved.</p>
             </footer>
-          </main>
+          </div>
         </div>
-      </div>
+      </main>
     </div>
   );
 }
