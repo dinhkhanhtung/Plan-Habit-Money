@@ -1,6 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
-
 module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
@@ -11,41 +9,35 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        "primary": "#13c8ec",
-        "income": "#48BB78", 
-        "expense": "#F56565",
-        "background-light": "var(--background-light)",
-        "background-dark": "var(--background-dark)",
-        "text-light": "var(--text-light)",
-        "text-dark": "var(--text-dark)",
-        "text-muted-light": "#4c8d9a",
-        "text-muted-dark": "#8a9a9d",
-        "border-light": "#cfe3e7",
-        "border-dark": "#2a3a3d", 
-        "card-light": "#ffffff",
-        "card-dark": "#18282b",
-        "success": "#28A745",
-        "danger": "#DC3545",
+        primary: '#13c8ec',
+        gray: {
+          50: '#f8fafc',
+          100: '#f1f5f9',
+          200: '#e2e8f0',
+          300: '#cbd5e1',
+          400: '#94a3b8',
+          500: '#64748b',
+          600: '#475569',
+          700: '#334155',
+          800: '#1e293b',
+          900: '#0f172a',
+        },
+        background: {
+          light: '#f6f8f8',
+          dark: '#101f22',
+        },
+        surface: {
+          light: '#ffffff',
+          dark: '#18282b',
+        },
       },
       fontFamily: {
-        "display": ["Inter", ...defaultTheme.fontFamily.sans]
-      },
-      borderRadius: {
-        "DEFAULT": "0.25rem",
-        "lg": "0.5rem", 
-        "xl": "0.75rem",
-        "full": "9999px"
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        sans: ['Inter', 'sans-serif'],
       },
     },
   },
   plugins: [
-    require('@tailwindcss/forms')({
-      strategy: 'class',
-    }),
+    require('@tailwindcss/forms'),
     require('@tailwindcss/aspect-ratio'),
   ],
 }
