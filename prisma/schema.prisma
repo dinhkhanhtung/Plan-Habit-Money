@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -188,4 +188,3 @@ model UsageLog {
 
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
-
