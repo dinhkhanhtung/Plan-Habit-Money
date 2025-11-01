@@ -16,20 +16,27 @@ module.exports = {
           light: '#F7FAFC',
           dark: '#1A202C'
         },
+        card: {
+          light: '#FFFFFF',
+          dark: '#111827'
+        },
         text: {
-          'light-primary': '#2D3748',
-          'dark-primary': '#F7FAFC',
-          'light-secondary': '#A0AEC0',
-          'dark-secondary': '#A0AEC0'
+          'primary-light': '#1F2937',
+          'primary-dark': '#F9FAFB',
+          'secondary-light': '#6B7280',
+          'secondary-dark': '#9CA3AF'
         },
         border: {
-          light: '#E2E8F0',
-          dark: '#4A5568'
+          light: '#E5E7EB',
+          dark: '#374151'
         },
         surface: {
           light: '#FFFFFF',
-          dark: '#2D3748'
-        }
+          dark: '#111827'
+        },
+        success: '#50E3C2',
+        danger: '#EF4444',
+        warning: '#F59E0B'
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
