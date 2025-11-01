@@ -130,7 +130,7 @@ export default function SmartMoneyPage() {
       <div className="flex-1 flex flex-col overflow-hidden">
         <Header title="Smart Money" />
         <main className="flex-1 overflow-y-auto">
-          <div className="px-6 py-8 max-w-7xl mx-auto">
+          <div className="px-10 py-8">
             {/* Header Section */}
             <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-8">
               <div>

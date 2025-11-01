@@ -6,13 +6,8 @@ interface HeaderProps {
 
 export default function Header({ title }: HeaderProps) {
   return (
-    <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/60 dark:border-white/10 px-4 sm:px-6 lg:px-10 py-4 bg-white dark:bg-background-dark sticky top-0 z-10">
-      <div className="flex items-center gap-3">
-        <button className="md:hidden flex h-8 w-8 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300">
-          <span className="material-symbols-outlined text-lg">menu</span>
-        </button>
-        <h2 className="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">{title}</h2>
-      </div>
+    <header className="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200/60 dark:border-white/10 px-10 py-4 bg-white dark:bg-background-dark sticky top-0 z-10">
+      <h2 className="text-gray-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">{title}</h2>
       <div className="flex items-center gap-4">
         <button className="flex h-10 w-10 cursor-pointer items-center justify-center overflow-hidden rounded-lg bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-gray-300">
           <span className="material-symbols-outlined text-xl">notifications</span>

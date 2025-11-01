@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
@@ -9,26 +9,30 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#4FD1C5',
+        primary: '#13c8ec',
         income: '#48BB78',
         expense: '#F56565',
         background: {
-          light: '#F7FAFC',
-          dark: '#1A202C'
+          light: '#f6f8f8',
+          dark: '#101f22'
         },
         card: {
-          light: '#FFFFFF',
-          dark: '#111827'
+          light: '#ffffff',
+          dark: '#18282b'
         },
         text: {
+          light: '#0d191b',
+          dark: '#e0e4e5',
+          'muted-light': '#4c8d9a',
+          'muted-dark': '#8a9a9d',
           'primary-light': '#1F2937',
           'primary-dark': '#F9FAFB',
           'secondary-light': '#6B7280',
           'secondary-dark': '#9CA3AF'
         },
         border: {
-          light: '#E5E7EB',
-          dark: '#374151'
+          light: '#cfe3e7',
+          dark: '#2a3a3d'
         },
         surface: {
           light: '#FFFFFF',
@@ -40,6 +44,13 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
+        display: ['Inter', 'sans-serif'],
+      },
+      borderRadius: {
+        'DEFAULT': '0.5rem',
+        'lg': '0.75rem',
+        'xl': '1rem',
+        'full': '9999px'
       },
     },
   },

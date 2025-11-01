@@ -9,6 +9,10 @@ const envSchema = z.object({
   NEXTAUTH_SECRET: z.string().min(32, 'NEXTAUTH_SECRET must be at least 32 characters'),
   NEXTAUTH_URL: z.string().url('NEXTAUTH_URL must be a valid URL'),
 
+  // Google OAuth
+  GOOGLE_CLIENT_ID: z.string().min(1, 'GOOGLE_CLIENT_ID is required'),
+  GOOGLE_CLIENT_SECRET: z.string().min(1, 'GOOGLE_CLIENT_SECRET is required'),
+
   // Stripe
   STRIPE_PUBLISHABLE_KEY: z.string().regex(/^pk_(test|live)_/, 'Invalid Stripe publishable key format'),
   STRIPE_SECRET_KEY: z.string().regex(/^sk_(test|live)_/, 'Invalid Stripe secret key format'),
@@ -38,6 +42,8 @@ export const {
   DATABASE_URL,
   NEXTAUTH_SECRET,
   NEXTAUTH_URL,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
   STRIPE_PUBLISHABLE_KEY,
   STRIPE_SECRET_KEY,
   STRIPE_WEBHOOK_SECRET,

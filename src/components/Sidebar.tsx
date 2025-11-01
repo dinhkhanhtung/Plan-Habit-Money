@@ -3,11 +3,14 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-const navigation = [
+const mainNavigation = [
   { name: 'Dashboard', href: '/dashboard', icon: 'dashboard' },
   { name: 'Weekly Planner', href: '/weekly-planner', icon: 'calendar_month' },
   { name: 'Habit Tracker', href: '/habit-tracker', icon: 'check_circle' },
   { name: 'Smart Money', href: '/smart-money', icon: 'account_balance_wallet' },
+]
+
+const bottomNavigation = [
   { name: 'Settings', href: '/settings', icon: 'settings' },
 ]
 
@@ -34,7 +37,7 @@ export default function Sidebar() {
         </div>
       </div>
       <nav className="flex flex-col gap-2">
-        {navigation.map((item) => (
+        {mainNavigation.map((item) => (
           <Link
             key={item.name}
             href={item.href}
@@ -57,6 +60,30 @@ export default function Sidebar() {
           </Link>
         ))}
       </nav>
+      <div className="mt-auto">
+        {bottomNavigation.map((item) => (
+          <Link
+            key={item.name}
+            href={item.href}
+            className={`flex items-center gap-3 px-3 py-2 rounded-lg ${
+              pathname === item.href
+                ? 'bg-primary/20 dark:bg-primary/30'
+                : 'hover:bg-gray-100 dark:hover:bg-white/10'
+            }`}
+          >
+            <span className={`material-symbols-outlined ${
+              pathname === item.href ? 'text-gray-900 dark:text-gray-100' : 'text-gray-700 dark:text-gray-300'
+            }`}>
+              {item.icon}
+            </span>
+            <p className={`text-sm font-medium leading-normal ${
+              pathname === item.href ? 'text-gray-900 dark:text-gray-100' : 'text-gray-700 dark:text-gray-300'
+            }`}>
+              {item.name}
+            </p>
+          </Link>
+        ))}
+      </div>
     </aside>
   )
 }

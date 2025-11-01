@@ -42,7 +42,7 @@ export function TaskCard({ task, onEdit, onToggleCompletion, isDragging }: TaskC
       style={style}
       className={`
         p-3 rounded-lg border-l-4 ${colorClass}
-        ${task.completed ? 'line-through text-text-muted-light dark:text-text-muted-dark' : 'text-text-light dark:text-text-dark'}
+        ${task.completed ? 'line-through text-gray-500 dark:text-gray-400' : 'text-gray-900 dark:text-white'}
         ${isDragging || isCurrentlyDragging ? 'opacity-50 cursor-grabbing' : 'cursor-grab hover:shadow-md transition-shadow'}
         group relative
       `}
@@ -63,7 +63,7 @@ export function TaskCard({ task, onEdit, onToggleCompletion, isDragging }: TaskC
             </p>
           </div>
           {task.description && (
-            <p className="text-xs text-text-muted-light dark:text-text-muted-dark mt-1 line-clamp-2">
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-2">
               {task.description}
             </p>
           )}
@@ -73,7 +73,7 @@ export function TaskCard({ task, onEdit, onToggleCompletion, isDragging }: TaskC
             e.stopPropagation();
             onEdit();
           }}
-          className="opacity-0 group-hover:opacity-100 p-1 text-text-muted-light dark:text-text-muted-dark hover:text-primary rounded transition-opacity"
+          className="opacity-0 group-hover:opacity-100 p-1 text-gray-400 dark:text-gray-500 hover:text-primary rounded transition-opacity"
         >
           <span className="material-symbols-outlined text-sm">edit</span>
         </button>

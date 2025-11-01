@@ -156,46 +156,44 @@ export default function WeeklyPlannerPage() {
         <Sidebar />
         <main className="flex-1 flex flex-col">
           <Header title="Weekly Planner" />
-          <div className="flex-1 overflow-y-auto p-8">
-            <div className="max-w-7xl mx-auto">
-              <div className="flex flex-wrap justify-between items-center gap-3 mb-4">
-                <p className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">My Week</p>
-                <WeekNavigation
-                  currentWeekStart={currentWeekStart}
-                  onWeekChange={setCurrentWeekStart}
-                />
-              </div>
-              <h2 className="text-text-light dark:text-text-dark tracking-light text-2xl font-bold leading-tight mb-6">
-                {currentWeekStart.toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                })} - {new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', {
-                  month: 'long',
-                  day: 'numeric',
-                  year: 'numeric',
-                })}
-              </h2>
+          <div className="flex-1 overflow-y-auto p-10">
+            <div className="flex flex-wrap justify-between items-center gap-3 mb-4">
+              <p className="text-text-light dark:text-text-dark text-4xl font-black leading-tight tracking-[-0.033em] min-w-72">My Week</p>
+              <WeekNavigation
+                currentWeekStart={currentWeekStart}
+                onWeekChange={setCurrentWeekStart}
+              />
+            </div>
+            <h2 className="text-text-light dark:text-text-dark tracking-light text-2xl font-bold leading-tight mb-6">
+              {currentWeekStart.toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+              })} - {new Date(currentWeekStart.getTime() + 6 * 24 * 60 * 60 * 1000).toLocaleDateString('en-US', {
+                month: 'long',
+                day: 'numeric',
+                year: 'numeric',
+              })}
+            </h2>
 
-              <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
-                <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
-                  <CalendarGrid
-                    tasks={tasks}
-                    onAddTask={handleAddTask}
-                    onEditTask={handleEditTask}
-                    onToggleTaskCompletion={handleToggleTaskCompletion}
-                  />
-                  <DragOverlay>
-                    {activeTask ? (
-                      <TaskCard
-                        task={activeTask}
-                        onEdit={() => {}}
-                        onToggleCompletion={() => {}}
-                        isDragging
-                      />
-                    ) : null}
-                  </DragOverlay>
-                </DndContext>
-              </div>
+            <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
+              <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+                <CalendarGrid
+                  tasks={tasks}
+                  onAddTask={handleAddTask}
+                  onEditTask={handleEditTask}
+                  onToggleTaskCompletion={handleToggleTaskCompletion}
+                />
+                <DragOverlay>
+                  {activeTask ? (
+                    <TaskCard
+                      task={activeTask}
+                      onEdit={() => {}}
+                      onToggleCompletion={() => {}}
+                      isDragging
+                    />
+                  ) : null}
+                </DragOverlay>
+              </DndContext>
             </div>
           </div>
         </main>

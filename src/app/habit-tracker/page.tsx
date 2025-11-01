@@ -116,49 +116,45 @@ const HabitTracker: React.FC = () => {
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Header title="Habit Tracker" />
-        <main className="flex-1 px-4 sm:px-6 lg:px-10 py-5 overflow-y-auto">
-            <div className="max-w-6xl mx-auto">
-              <div className="rounded-xl bg-card-light dark:bg-card-dark border border-border-light dark:border-border-dark p-6">
-                <div className="flex flex-wrap justify-between gap-4 py-6">
-              <div className="flex flex-col gap-2">
-                <h1 className="text-slate-800 dark:text-slate-200 text-4xl font-black leading-tight tracking-[-0.033em]">
-                  My Habits
-                </h1>
-                <p className="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">
-                  Track your progress and build positive routines.
-                </p>
-              </div>
-              <button
-                onClick={handleAddHabit}
-                className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2 hover:bg-primary/90 transition-colors"
-              >
-                <span className="material-symbols-outlined">add</span>
-                <span className="truncate">Add New Habit</span>
-              </button>
-              </div>
+        <main className="flex-1 px-10 py-5 overflow-y-auto">
+          <div className="flex flex-wrap justify-between gap-4 py-6">
+            <div className="flex flex-col gap-2">
+              <h1 className="text-slate-800 dark:text-slate-200 text-4xl font-black leading-tight tracking-[-0.033em]">
+                My Habits
+              </h1>
+              <p className="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">
+                Track your progress and build positive routines.
+              </p>
             </div>
-
-            <ProgressStats completionRate={completionRate} />
-
-            <CategoryFilter
-              selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
-            />
-
-            <HabitGrid
-              habits={filteredHabits}
-              onEditHabit={handleEditHabit}
-              onDeleteHabit={handleDeleteHabit}
-              onToggleDay={handleToggleDay}
-            />
-
-            <HabitModal
-              isOpen={isModalOpen}
-              onClose={() => setIsModalOpen(false)}
-              onSave={handleSaveHabit}
-              habit={editingHabit}
-            />
+            <button
+              onClick={handleAddHabit}
+              className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] gap-2 hover:bg-primary/90 transition-colors"
+            >
+              <span className="material-symbols-outlined">add</span>
+              <span className="truncate">Add New Habit</span>
+            </button>
           </div>
+
+          <ProgressStats completionRate={completionRate} />
+
+          <CategoryFilter
+            selectedCategory={selectedCategory}
+            onCategoryChange={setSelectedCategory}
+          />
+
+          <HabitGrid
+            habits={filteredHabits}
+            onEditHabit={handleEditHabit}
+            onDeleteHabit={handleDeleteHabit}
+            onToggleDay={handleToggleDay}
+          />
+
+          <HabitModal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            onSave={handleSaveHabit}
+            habit={editingHabit}
+          />
         </main>
       </div>
     </div>

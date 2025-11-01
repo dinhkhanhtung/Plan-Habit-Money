@@ -1,17 +1,25 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --primary: #4FD1C5;
+  --primary: #13c8ec;
   --income: #48BB78;
   --expense: #F56565;
-  --background-light: #F7FAFC;
-  --background-dark: #1A202C;
+  --background-light: #f6f8f8;
+  --background-dark: #101f22;
+  --text-light: #0d191b;
+  --text-dark: #e0e4e5;
+  --text-muted-light: #4c8d9a;
+  --text-muted-dark: #8a9a9d;
   --text-light-primary: #2D3748;
   --text-dark-primary: #F7FAFC;
   --text-light-secondary: #A0AEC0;
   --text-dark-secondary: #A0AEC0;
-  --border-light: #E2E8F0;
-  --border-dark: #4A5568;
+  --border-light: #cfe3e7;
+  --border-dark: #2a3a3d;
+  --card-light: #ffffff;
+  --card-dark: #18282b;
   --surface-light: #FFFFFF;
   --surface-dark: #2D3748;
 }
@@ -19,15 +27,12 @@
 body {
   font-family: 'Inter', sans-serif;
   background-color: var(--background-light);
-  /* use primary text token; keep legacy aliases for compatibility */
-  color: var(--text-light-primary);
-  --text-light: var(--text-light-primary);
+  color: var(--text-light);
 }
 
 .dark body {
   background-color: var(--background-dark);
-  color: var(--text-dark-primary);
-  --text-dark: var(--text-dark-primary);
+  color: var(--text-dark);
 }
 
 .material-symbols-outlined {
@@ -81,4 +86,5 @@ body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
 }

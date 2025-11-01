@@ -30,7 +30,7 @@ export default function SettingsPage() {
     <div className="relative flex h-screen w-full flex-col">
       <div className="flex h-full grow">
         <Sidebar />
-        <main className="flex-1 p-6 lg:p-10">
+        <main className="flex-1 p-10">
           <div className="w-full max-w-4xl mx-auto">
             <header className="mb-8">
               <h1 className="text-4xl font-black leading-tight tracking-[-0.033em]">Cài đặt tài khoản</h1>

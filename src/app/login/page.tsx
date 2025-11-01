@@ -2,10 +2,15 @@
 
 import AuthForm from '@/components/AuthForm'
 import { loginSchema } from '@/lib/validations/auth'
+import { signIn } from 'next-auth/react'
 
 export default function LoginPage() {
   const handleLogin = async (data: any) => {
     // Login is handled by NextAuth in the AuthForm component
+  }
+
+  const handleGoogleSignIn = async () => {
+    await signIn('google', { callbackUrl: '/dashboard' })
   }
 
   return (
@@ -33,7 +38,7 @@ export default function LoginPage() {
                 </div>
               </div>
             </div>
-            <div className="flex w-full flex-col justify-center bg-background-light p-8 dark:bg-[#152427] sm:p-12 lg:w-1/2">
+            <div className="flex w-full flex-col justify-center bg-background-light p-8 dark:bg-background-dark sm:p-12 lg:w-1/2">
               <div className="flex w-full flex-col items-center">
                 <span className="material-symbols-outlined text-5xl text-primary">check_circle</span>
               </div>
@@ -54,7 +59,11 @@ export default function LoginPage() {
                 <span className="mx-4 flex-shrink text-sm text-gray-500 dark:text-gray-400">hoặc</span>
                 <div className="flex-grow border-t border-gray-300 dark:border-gray-600" />
               </div>
-              <button className="mb-4 flex h-12 w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-6 text-base font-medium text-gray-800 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-offset-background-dark">
+              <button
+                onClick={handleGoogleSignIn}
+                type="button"
+                className="flex h-12 w-full items-center justify-center gap-3 rounded-lg border border-gray-300 bg-white px-6 text-base font-medium text-gray-800 shadow-sm transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700 dark:focus:ring-offset-background-dark mb-4"
+              >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <path d="M22.5777 12.2714C22.5777 11.4514 22.5077 10.6514 22.3877 9.87141H12.2277V14.3514H18.1577C17.9077 15.9314 17.0277 17.2914 15.6377 18.2614V21.1014H19.5877C21.6177 19.2414 22.5777 16.1414 22.5777 12.2714Z" fill="#4285F4" />
                   <path d="M12.2276 23.0014C15.1576 23.0014 17.6176 22.0314 19.5876 20.4014L15.6376 17.5614C14.6576 18.2314 13.5176 18.6614 12.2276 18.6614C9.7276 18.6614 7.6176 17.0314 6.8476 14.8114H2.7876V17.7414C4.7576 20.9314 8.2176 23.0014 12.2276 23.0014Z" fill="#34A853" />

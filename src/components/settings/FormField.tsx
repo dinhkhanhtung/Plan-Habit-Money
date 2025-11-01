@@ -31,9 +31,9 @@ export default function FormField({
         placeholder={placeholder}
         required={required}
         disabled={disabled}
-        className={`form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-text-light dark:text-text-dark focus:outline-0 focus:ring-2 focus:ring-primary/50 border ${
+        className={`form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-gray-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border ${
           error ? 'border-danger' : 'border-border-light dark:border-border-dark'
-        } bg-background-light dark:bg-background-dark h-12 placeholder:text-subtext-light dark:placeholder:text-subtext-dark px-4 text-base font-normal leading-normal ${
+        } bg-background-light dark:bg-background-dark h-12 placeholder:text-gray-500 dark:placeholder:text-gray-400 px-4 text-base font-normal leading-normal ${
           disabled ? 'cursor-not-allowed opacity-50' : ''
         }`}
       />

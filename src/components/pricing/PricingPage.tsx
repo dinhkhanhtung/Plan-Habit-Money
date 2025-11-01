@@ -10,7 +10,7 @@ export default function PricingPage() {
   return (
     <div className="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-[#333333] dark:text-gray-200">
       <main className="flex flex-1 justify-center">
-        <div className="flex w-full max-w-5xl flex-col px-6 py-12 md:py-20">
+        <div className="flex w-full max-w-5xl flex-col px-10 py-12 md:py-20">
           {/* HeroSection */}
           <section className="mb-12 text-center md:mb-20">
             <h1 className="text-3xl font-black leading-tight tracking-tighter text-[#333333] dark:text-white md:text-5xl">
